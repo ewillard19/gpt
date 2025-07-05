@@ -1,7 +1,7 @@
 from utils import *
 
 class PositionalEncoding(nn.Module):
-    def __init__(self, d_model, max_len=30):
+    def __init__(self, d_model, max_len=128):
         super().__init__()
         pe = torch.zeros(max_len, d_model)
         for pos in range(max_len):
