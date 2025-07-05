@@ -16,8 +16,8 @@ class TransformerBlock(nn.Module):
         self.norm2 = nn.LayerNorm(d_model)
         self.dropout2 = nn.Dropout(0.2)
 
-    def forward(self, x):
-        attn_out = self.attn(x)
+    def forward(self, x, pad_mask=None): 
+        attn_out = self.attn(x, pad_mask=pad_mask) 
         x = self.norm1(x + self.dropout1(attn_out))
         ff_out = self.ff(x)
         x = self.norm2(x + self.dropout2(ff_out))
